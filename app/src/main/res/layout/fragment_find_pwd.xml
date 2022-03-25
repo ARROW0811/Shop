@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.FindPwdFragment">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/no_bar_back"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/app_cname"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/ll_user_login"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/tv_app_name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <!--android:layout_gravity="center_horizontal"失效？？-->
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_app_name">
+
+            <EditText
+                android:id="@+id/et_user_name"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:background="@drawable/edittext"
+                android:hint="@string/input_phoneNumber"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_user_psw"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="220dp"
+                android:layout_height="60dp"
+                android:background="@drawable/edittext"
+                android:hint="@string/code"
+                android:paddingLeft="30dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/bt_getCode"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@id/et_code"
+                android:text="@string/get_code"
+                android:background="@color/main_lightblue"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/bt_confirm"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_button"
+        android:text="@string/button_confirm"
+        android:layout_marginTop="60dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/ll_user_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
