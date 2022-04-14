@@ -16,5 +16,9 @@
     <color name="login_dividingLine">#FFd4d4d5</color>
     <color name="login_edittext_hint">#FF9e9fa0</color>
     <color name="et_grey">#60eeeeee</color>
-    
+    <!--MainActivity-->
+    <color name="darkgrey">#FF606060</color>
+    <color name="Blue">#FF1296db</color>
+    <!--MineFragment-->
+    <color name="quit_red">#FFf74b4b</color>
 </resources>

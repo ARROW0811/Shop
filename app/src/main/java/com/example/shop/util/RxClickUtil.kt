@@ -1,4 +1,3 @@
-@file:JvmName("RxClickUtil")
 package com.example.shop.util
 
 import android.view.View
@@ -21,8 +20,13 @@ object RxClickUtil {
 
     private class ViewClickOnSubscribe(private val view: View) : ObservableOnSubscribe<Int?>{
 
-        override fun subscribe(emitter: @NonNull ObservableEmitter<Int?>) {
-            TODO("Not yet implemented")
+        @Throws(Throwable::class)
+        override fun subscribe(emitter: ObservableEmitter<Int?>) {
+            view.setOnClickListener {
+                if (!emitter.isDisposed) {
+                    emitter.onNext(1)
+                }
+            }
         }
 
     }

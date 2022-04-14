@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.MineFragment">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:id="@+id/fl_icon_bg"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_icon_bg"
+            android:scaleType="centerCrop"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_mine"
+                android:text="@string/mine"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="50dp"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <com.example.shop.view.CircleImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_mine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_username"
+                android:text="@string/username"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/fl_icon_bg"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/iv_published"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/published" />
+
+        <TextView
+            android:id="@+id/tv_published"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_published"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/published" />
+
+        <ImageView
+            android:id="@+id/iv_sold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/sold" />
+
+        <TextView
+            android:id="@+id/tv_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_sold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/sold" />
+
+        <ImageView
+            android:id="@+id/iv_buyed"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="54dp"
+            android:background="@drawable/buyed"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/tv_buyed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_buyed"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8.5dp"
+            android:layout_marginEnd="42dp"
+            android:text="@string/buyed" />
+
+        <ImageView
+            android:id="@+id/iv_collection"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv_published"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/collection" />
+
+        <TextView
+            android:id="@+id/tv_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_collection"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/collectionItem" />
+
+        <ImageView
+            android:id="@+id/iv_information"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tv_sold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/information" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_information"
+            android:text="@string/modifyInformation"
+            android:layout_below="@+id/iv_information"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_quit"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/quit"
+        android:background="@color/quit_red"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        app:rcb_cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

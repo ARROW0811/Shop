@@ -19,6 +19,37 @@
     <string name="phoneNumber">"手机"</string>
     <string name="password">"密码"</string>
     <string name="register">"注册"</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--首页-->
+    <string name="mainFragment">"首页"</string>
+    <string name="presentFragment">"赠送"</string>
+    <string name="publishFragment">"发布"</string>
+    <string name="mineFragment">"我的"</string>
+    <!--我的-->
+    <string name="quit">"退出登录"</string>
+    <string name="mine">"个人中心"</string>
+    <string name="published">"已发布的"</string>
+    <string name="sold">"已卖出的"</string>
+    <string name="buyed">"已买到的"</string>
+    <string name="modifyInformation">"基本资料"</string>
+    <string name="collectionItem">"我的收藏"</string>
+    <string name="recommend">"推荐"</string>
+    <!--赠送-->
+    <string name="free">免费</string>
+    <string name="take_photos">拍照</string>
+    <string name="from_albums">从相册中选择</string>
+    <string name="cancel">取 消</string>
+    <string name="publish">发布商品</string>
+    <string name="finish">完成</string>
+    <string name="goodsTitle">标题</string>
+    <string name="goodsPrice">价格</string>
+    <string name="goodsOriginalPrice">原价</string>
+    <string name="fax">可不填</string>
+    <string name="goodsIntro">商品简介</string>
+    <string name="delivery">送货方式</string>
+    <string name="visit">送货上门</string>
+    <string name="takeGoods">自己来取</string>
+    <string name="location">我在</string>
+    <string name="information_edit">个人资料</string>
+
+
 </resources>

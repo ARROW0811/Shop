@@ -14,6 +14,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -48,5 +49,15 @@ dependencies {
     //navigation
     implementation 'androidx.navigation:navigation-fragment:2.0.0'
     implementation 'androidx.navigation:navigation-ui:2.0.0'
+    //viewpager
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    // 加载图片
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    // 高斯模糊
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
+    //cardview
+    implementation 'androidx.cardview:cardview:1.0.0'
 
 }
