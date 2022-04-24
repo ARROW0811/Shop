@@ -16,7 +16,7 @@ import com.example.shop.adapter.MainFragmentPagerAdapter;
 import com.example.shop.fragment.MainFragment;
 import com.example.shop.fragment.PublishFragment;
 import com.example.shop.fragment.MineFragment;
-import com.example.shop.fragment.PresentFragment;
+import com.example.shop.fragment.SortFragment;
 
 public class HomeActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     private ViewPager2 viewPager2;
@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         viewPager2.setAdapter(mainFragmentPagerAdapter);
         mainFragmentPagerAdapter.addFragment(new MainFragment());
-        mainFragmentPagerAdapter.addFragment(new PresentFragment());
+        mainFragmentPagerAdapter.addFragment(new SortFragment());
         mainFragmentPagerAdapter.addFragment(new PublishFragment());
         mainFragmentPagerAdapter.addFragment(new MineFragment());
 
@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements RadioGroup.OnChec
         drawable1.setBounds(0,0,69,69);
         mRbMain.setCompoundDrawables(null,drawable1,null,null);
 
-        Drawable drawable2=getResources().getDrawable(R.drawable.tab_menu_present);
+        Drawable drawable2=getResources().getDrawable(R.drawable.tab_menu_sort);
         drawable2.setBounds(0,0,69,69);
         mRbPresent.setCompoundDrawables(null,drawable2,null,null);
 

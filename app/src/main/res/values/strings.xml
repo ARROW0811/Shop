@@ -21,7 +21,7 @@
     <string name="register">"注册"</string>
     <!--首页-->
     <string name="mainFragment">"首页"</string>
-    <string name="presentFragment">"赠送"</string>
+    <string name="presentFragment">"分类"</string>
     <string name="publishFragment">"发布"</string>
     <string name="mineFragment">"我的"</string>
     <!--我的-->
@@ -33,11 +33,13 @@
     <string name="modifyInformation">"基本资料"</string>
     <string name="collectionItem">"我的收藏"</string>
     <string name="recommend">"推荐"</string>
-    <!--赠送-->
-    <string name="free">免费</string>
     <string name="take_photos">拍照</string>
     <string name="from_albums">从相册中选择</string>
     <string name="cancel">取 消</string>
+    <string name="information_edit">个人资料</string>
+    <!--分类-->
+    <string name="sort">热门分类</string>
+    <!--发布-->
     <string name="publish">发布商品</string>
     <string name="finish">完成</string>
     <string name="goodsTitle">标题</string>
@@ -48,8 +50,16 @@
     <string name="delivery">送货方式</string>
     <string name="visit">送货上门</string>
     <string name="takeGoods">自己来取</string>
-    <string name="location">我在</string>
-    <string name="information_edit">个人资料</string>
+    <string name="my_location">我在</string>
+    <!--商品详情-->
+    <string name="goods_detail">商品详情</string>
+    <string name="goodsSort">类别</string>
+    <string name="bt_publish">发布</string>
+    <string name="details">详情</string>
+    <string name="detailsContent">具体内容...</string>
+    <string name="sellerPhoneNumber">联系电话</string>
+    <string name="location">地址</string>
+    <string name="buy">立即购买</string>
 
 
 </resources>

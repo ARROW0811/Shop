@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 apply plugin: 'kotlin-android'
 
@@ -59,5 +61,22 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.1.0'
     //cardview
     implementation 'androidx.cardview:cardview:1.0.0'
+    //price-view
+    implementation 'com.gitee.tinyqiu:price-view:1.5'
 
+    def room_version = "2.4.2"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // optional - Paging 3 Integration
+    implementation "androidx.room:room-paging:2.5.0-alpha01"
+
+    kapt "androidx.room:room-compiler:$room_version"
+    // room针对kotlin协程功能的扩展库
+    implementation "androidx.room:room-ktx:$room_version"
 }

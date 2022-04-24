@@ -3,25 +3,23 @@ package com.example.shop.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.shop.R;
 import com.example.shop.adapter.GoodsAdapter;
-import com.example.shop.bean.GoodsBean;
+import com.example.shop.entity.Goods;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainFragment extends Fragment {
-    private List<GoodsBean> mGoodsList=new ArrayList<>();
+    private List<Goods> mGoodsList=new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +43,7 @@ public class MainFragment extends Fragment {
 
     private void initGoodsBean() {
         for (int i=0;i<20;i++){
-            GoodsBean goods1=new GoodsBean("商品asjdnaosihfaonvoaivnapvnpaisciasncoiasnc",R.drawable.icon,"10.0");
+            Goods goods1=new Goods("商品asjdnaosihfaonvoaivnapvnpaisciasncoiasnc",R.drawable.icon,"10.0");
             mGoodsList.add(goods1);
         }
     }

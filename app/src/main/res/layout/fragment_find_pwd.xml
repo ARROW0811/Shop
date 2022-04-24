@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_app_name">
 
             <EditText
-                android:id="@+id/et_user_name"
+                android:id="@+id/et_phoneNumber"
                 android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:background="@drawable/edittext"

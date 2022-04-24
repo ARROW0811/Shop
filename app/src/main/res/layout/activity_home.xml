@@ -23,7 +23,7 @@
         <RadioButton
             android:id="@+id/rb_present"
             style="@style/tab_menu_item"
-            android:drawableTop="@drawable/tab_menu_present"
+            android:drawableTop="@drawable/tab_menu_sort"
             android:selectAllOnFocus="true"
             android:text="@string/presentFragment" />
 

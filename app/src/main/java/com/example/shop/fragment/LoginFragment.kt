@@ -3,22 +3,33 @@ package com.example.shop.fragment
 import android.content.Intent
 import android.widget.TextView
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.shop.R
 import androidx.navigation.Navigation
+import com.example.shop.MyApplication
 import com.example.shop.activity.HomeActivity
+import com.example.shop.entity.User
+import com.example.shop.util.L
+import com.example.shop.util.L.d
+import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.RxClickUtil
+import com.example.shop.util.T
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.thread
 
 class LoginFragment : Fragment() {
     lateinit var mTxtFindpsw:TextView
     lateinit var mTxtRegister: TextView
     lateinit var mBtnLogin: Button
+    lateinit var mEtPhoneNumber:EditText
+    lateinit var mEtPassWord:EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,6 +41,8 @@ class LoginFragment : Fragment() {
         mTxtFindpsw = view.findViewById(R.id.tv_findpsw)
         mTxtRegister = view.findViewById(R.id.tv_register)
         mBtnLogin = view.findViewById(R.id.bt_login)
+        mEtPhoneNumber=view.findViewById(R.id.et_phoneNumber)
+        mEtPassWord=view.findViewById(R.id.et_password)
         RxClickUtil.clickEvent(mTxtFindpsw)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe { it->
@@ -44,20 +57,26 @@ class LoginFragment : Fragment() {
         RxClickUtil.clickEvent(mBtnLogin)
                 .throttleFirst(500,TimeUnit.MILLISECONDS)
                 .subscribe{
-                    var intent=Intent(activity,HomeActivity::class.java)
+                    thread {
+                        var password=mEtPassWord.text.toString()
+                        var phoneNumber=mEtPhoneNumber.text.toString()
+                        if(password.equals(MyApplication.instance.userDao.getPassword(phoneNumber))){
+                            var intent=Intent(activity,HomeActivity::class.java)
                             startActivity(intent)
+                            Looper.prepare()
+                            T.showShort(context,"登陆成功")
+                            Looper.loop()
+                            LoginStateUtil.getInstance(context).savePhoneNumberToLocal(phoneNumber)
+                        }else{
+                            Looper.prepare()
+                            T.showShort(context,"密码错误")
+                            Looper.loop()
+                        }
+                    }
+
                 }
 
-        /*
-        txt_register.setOnClickListener((View.OnClickListener) this);
-        txt_findpsw.setOnClickListener((View.OnClickListener) this);
-        switch (view.getId()){
-            case R.id.tv_findpsw:
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_findPwdFragment);
-            case R.id.tv_register:
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment);
-        }
-         */return view
+        return view
     }
 
     override fun onResume() {

@@ -1,240 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.PublishFragment">
-
-    <TextView
-        android:id="@+id/tv_publish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/publish"
-        android:layout_marginTop="46dp"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-    <TextView
-        android:id="@+id/finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="10dp"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <RelativeLayout
-        android:id="@+id/rl_goodsTitle"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:background="@color/et_grey"
-        app:layout_constraintTop_toBottomOf="@id/tv_publish"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_goodsTitle"
-            android:layout_width="60dp"
+            android:id="@+id/tv_publish"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingStart="15dp"
-            android:text="@string/goodsTitle"
-            android:textSize="16sp" />
+            android:layout_marginTop="46dp"
+            android:text="@string/publish"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/et_username"
-            android:layout_width="260dp"
+
+        <RelativeLayout
+            android:id="@+id/rl_goodsTitle"
+            android:layout_width="320dp"
             android:layout_height="60dp"
-            android:layout_toEndOf="@+id/tv_goodsTitle"
-            android:background="@drawable/edittext"
-            android:inputType="text"
-            android:paddingLeft="15dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/login_edittext_hint"
-            android:textSize="16sp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_price"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@color/et_grey"
-        app:layout_constraintTop_toBottomOf="@id/rl_goodsTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_publish">
 
-        <TextView
-            android:id="@+id/tv_goodsPrice"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingStart="15dp"
-            android:text="@string/goodsPrice"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_goodsTitle"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="15dp"
+                android:text="@string/goodsTitle"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/et_goodsPrice"
-            android:layout_width="100dp"
+            <EditText
+                android:id="@+id/et_goodsTitle"
+                android:layout_width="260dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@+id/tv_goodsTitle"
+                android:background="@drawable/edittext"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_goodsSort"
+            android:layout_width="320dp"
             android:layout_height="60dp"
-            android:layout_toEndOf="@+id/tv_goodsPrice"
-            android:background="@drawable/edittext"
-            android:inputType="number"
-            android:paddingLeft="15dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/login_edittext_hint"
-            android:textSize="16sp" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_goodsTitle">
 
-        <TextView
-            android:id="@+id/tv_goodsOriginalPrice"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/et_goodsPrice"
-            android:paddingStart="15dp"
-            android:text="@string/goodsOriginalPrice"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_goodsSort"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="15dp"
+                android:text="@string/goodsSort"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/et_goodsOriginalPrice"
-            android:layout_width="100dp"
+            <Spinner
+                android:id="@+id/sp_goodsSort"
+                android:layout_width="260dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@+id/tv_goodsSort"
+                android:background="@drawable/edittext"
+                android:entries="@array/goodsSort"
+                android:inputType="text"
+                android:paddingLeft="15dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_price"
+            android:layout_width="320dp"
             android:layout_height="60dp"
-            android:layout_toEndOf="@+id/tv_goodsOriginalPrice"
-            android:background="@drawable/edittext"
-            android:hint="@string/fax"
-            android:inputType="number"
-            android:paddingLeft="15dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/login_edittext_hint"
-            android:textSize="16sp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_goodsIntro"
-        android:layout_width="320dp"
-        android:layout_height="260dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@color/et_grey"
-        app:layout_constraintTop_toBottomOf="@id/rl_price"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_goodsSort">
 
-        <TextView
-            android:id="@+id/tv_goodsIntro"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingStart="15dp"
-            android:singleLine="false"
-            android:maxEms="2"
-            android:text="@string/goodsIntro"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_goodsPrice"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="15dp"
+                android:text="@string/goodsPrice"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/et_goodsIntro"
-            android:layout_width="260dp"
+            <EditText
+                android:id="@+id/et_goodsPrice"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@+id/tv_goodsPrice"
+                android:background="@drawable/edittext"
+                android:inputType="number"
+                android:paddingLeft="15dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_goodsOriginalPrice"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/et_goodsPrice"
+                android:paddingStart="15dp"
+                android:text="@string/goodsOriginalPrice"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_goodsOriginalPrice"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@+id/tv_goodsOriginalPrice"
+                android:background="@drawable/edittext"
+                android:hint="@string/fax"
+                android:inputType="number"
+                android:paddingLeft="15dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_goodsIntro"
+            android:layout_width="320dp"
             android:layout_height="260dp"
-            android:layout_toEndOf="@+id/tv_goodsIntro"
-            android:background="@drawable/edittext"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:paddingLeft="15dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/login_edittext_hint"
-            android:textSize="16sp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_delivery"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@color/et_grey"
-        app:layout_constraintTop_toBottomOf="@id/rl_goodsIntro"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_price">
 
-        <TextView
-            android:id="@+id/tv_delivery"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:maxEms="2"
-            android:paddingStart="15dp"
-            android:singleLine="false"
-            android:text="@string/delivery"
-            android:textSize="16sp" />
-        <RadioGroup
-            android:id="@+id/rg_delivery"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tv_delivery"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/btnMan"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_goodsIntro"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:text="@string/visit" />
+                android:layout_centerVertical="true"
+                android:maxEms="2"
+                android:paddingStart="15dp"
+                android:singleLine="false"
+                android:text="@string/goodsIntro"
+                android:textSize="16sp" />
 
-            <RadioButton
-                android:id="@+id/btnWoman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/takeGoods"/>
-        </RadioGroup>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_location"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:background="@color/et_grey"
-        app:layout_constraintTop_toBottomOf="@id/rl_delivery"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <EditText
+                android:id="@+id/et_goodsIntro"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_toEndOf="@+id/tv_goodsIntro"
+                android:background="@drawable/edittext"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:paddingLeft="15dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_location"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingStart="15dp"
-            android:text="@string/location"
-            android:textSize="16sp" />
-        <ImageView
-            android:id="@+id/iv_location"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/location"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/tv_location"/>
-
-        <EditText
-            android:id="@+id/et_location"
-            android:layout_width="260dp"
+        <RelativeLayout
+            android:id="@+id/rl_delivery"
+            android:layout_width="320dp"
             android:layout_height="60dp"
-            android:layout_toEndOf="@+id/tv_location"
-            android:background="@drawable/edittext"
-            android:inputType="text"
-            android:paddingLeft="40dp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/login_edittext_hint"
-            android:textSize="16sp" />
-    </RelativeLayout>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_goodsIntro">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_delivery"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:maxEms="2"
+                android:paddingStart="15dp"
+                android:singleLine="false"
+                android:text="@string/delivery"
+                android:textSize="16sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_delivery"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tv_delivery"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btnMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/visit" />
+
+                <RadioButton
+                    android:id="@+id/btnWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/takeGoods" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_location"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/et_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rl_delivery">
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingStart="15dp"
+                android:text="@string/location"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/tv_location"
+                android:background="@drawable/location" />
+
+            <EditText
+                android:id="@+id/et_location"
+                android:layout_width="260dp"
+                android:layout_height="60dp"
+                android:layout_toEndOf="@+id/tv_location"
+                android:background="@drawable/edittext"
+                android:inputType="text"
+                android:paddingLeft="40dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/login_edittext_hint"
+                android:textSize="16sp" />
+        </RelativeLayout>
+        <Button
+            android:id="@+id/bt_publish"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/bt_publish"
+            android:background="@drawable/login_button"
+            app:layout_constraintTop_toBottomOf="@id/rl_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

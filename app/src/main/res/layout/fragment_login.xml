@@ -40,14 +40,14 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_app_name">
 
             <EditText
-                android:id="@+id/et_user_phone"
+                android:id="@+id/et_phoneNumber"
                 android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:background="@drawable/edittext"
                 android:hint="@string/input_phoneNumber"
-                android:singleLine="true"
                 android:inputType="phone"
                 android:paddingLeft="30dp"
+                android:singleLine="true"
                 android:textColor="@color/black"
                 android:textColorHint="@color/login_edittext_hint"
                 android:textSize="20sp" />
@@ -62,7 +62,7 @@
             android:layout_marginTop="30dp">
 
             <EditText
-                android:id="@+id/et_user_psw"
+                android:id="@+id/et_password"
                 android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:background="@drawable/edittext"

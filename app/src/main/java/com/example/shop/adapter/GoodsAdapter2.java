@@ -10,12 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shop.R;
-import com.example.shop.bean.GoodsBean;
+import com.example.shop.entity.Goods;
 
 import java.util.List;
 
 public class GoodsAdapter2 extends RecyclerView.Adapter<GoodsAdapter2.ViewHolder>{
-    private List<GoodsBean> mGoodsList;
+    private List<Goods> mGoodsList;
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView mIvGoods;
         TextView mTvGoodsName;
@@ -27,7 +27,7 @@ public class GoodsAdapter2 extends RecyclerView.Adapter<GoodsAdapter2.ViewHolder
             mTvGoodsPrice=(TextView) itemView.findViewById(R.id.tv_goodsPrice);
         }
     }
-    public GoodsAdapter2(List<GoodsBean> goodsList){
+    public GoodsAdapter2(List<Goods> goodsList){
         mGoodsList=goodsList;
     }
     @NonNull
@@ -41,10 +41,10 @@ public class GoodsAdapter2 extends RecyclerView.Adapter<GoodsAdapter2.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull GoodsAdapter2.ViewHolder holder, int position) {
-        GoodsBean goodsBean=mGoodsList.get(position);
-        holder.mIvGoods.setImageResource(goodsBean.getImageId());
-        holder.mTvGoodsName.setText(goodsBean.getName());
-        holder.mTvGoodsPrice.setText(goodsBean.getPrice());
+        Goods goods =mGoodsList.get(position);
+        holder.mIvGoods.setImageResource(goods.getImageId());
+        holder.mTvGoodsName.setText(goods.getName());
+        holder.mTvGoodsPrice.setText(goods.getPrice());
     }
 
     @Override

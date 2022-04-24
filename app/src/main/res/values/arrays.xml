@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="goodsSort">
+        <item >校园代步</item>
+        <item >手机</item>
+        <item >电脑</item>
+        <item >电器</item>
+        <item >运动健身</item>
+        <item >图书教材</item>
+        <item >租赁</item>
+        <item >免费赠送</item>
+        <item >其他</item>
+    </string-array>
+</resources>

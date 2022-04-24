@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.GoodsDetailActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="680dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/black_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_goods_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
+                android:text="@string/goods_detail"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <RelativeLayout
+                android:id="@+id/rl_seller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_goods_detail">
+
+                <com.example.shop.view.CircleImageView
+                    android:id="@+id/civ_sellerIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/icon" />
+
+                <TextView
+                    android:id="@+id/tv_seller_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/civ_sellerIcon"
+                    android:text="ARROW" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_goods"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_seller" />
+
+            <TextView
+                android:id="@+id/tv_goodsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="标题..."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_goods" />
+
+            <com.chockqiu.view.PriceView
+                android:id="@+id/tv_goodsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_goodsTitle"
+                app:pv_delLineText="2000"
+                app:pv_delLineTextColor="#cccccc"
+                app:pv_delLineTextLeftPadding="3dp"
+                app:pv_delLineTextSize="12sp"
+                app:pv_price2Text=".99"
+                app:pv_price2TextColor="@color/quit_red"
+                app:pv_price2TextSize="10sp"
+                app:pv_priceText="1899"
+                app:pv_priceTextColor="@color/quit_red"
+                app:pv_priceTextLeftPadding="1dp"
+                app:pv_priceTextSize="16sp"
+                app:pv_unitText="¥"
+                app:pv_unitTextColor="@color/quit_red"
+                app:pv_unitTextSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/details"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_goodsPrice" />
+
+            <TextView
+                android:id="@+id/tv_details_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/detailsContent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_details" />
+
+            <RelativeLayout
+                android:id="@+id/rl_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_content">
+
+                <TextView
+                    android:id="@+id/tv_phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/sellerPhoneNumber" />
+
+                <TextView
+                    android:id="@+id/tv_seller_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/tv_phoneNumber"
+                    android:text="13330227416" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rl_phone">
+
+                <TextView
+                    android:id="@+id/tv_delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/delivery" />
+
+                <TextView
+                    android:id="@+id/tv_delivery_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@id/tv_delivery"
+                    android:text="自行提取" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rl_delivery">
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/location" />
+
+                <TextView
+                    android:id="@+id/tv_location_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="43dp"
+                    android:layout_toEndOf="@id/tv_location"
+                    android:text="明理4舍" />
+
+            </RelativeLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/iv_collect"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/tab_menu_sort" />
+
+        <Button
+            android:id="@+id/bt_buy"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/login_button"
+            android:text="@string/buy" />
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
