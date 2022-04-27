@@ -45,7 +45,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/edittext"
                 android:hint="@string/input_phoneNumber"
-                android:inputType="phone"
+                android:inputType="number"
                 android:paddingLeft="30dp"
                 android:singleLine="true"
                 android:textColor="@color/black"

@@ -16,7 +16,10 @@ import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import com.example.shop.MyApplication
 import com.example.shop.entity.User
+import com.example.shop.util.L
 import com.example.shop.util.LoginStateUtil
+import kotlinx.coroutines.runBlocking
+import kotlin.concurrent.thread
 
 class InformationActivity : AppCompatActivity(), View.OnClickListener {
     private var mDlgUserName: AlertDialog? = null
@@ -35,31 +38,45 @@ class InformationActivity : AppCompatActivity(), View.OnClickListener {
     private var mTvPassword: TextView? = null
     lateinit var mIvPassword: ImageView
     lateinit var mIvBack: ImageView
-    lateinit var user:User
-    var handler:Handler =object:Handler(Looper.myLooper()!!){
+    lateinit var user: User
+    lateinit var name: String
+    lateinit var password: String
+    private val handler: Handler = object : Handler(Looper.myLooper()!!) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            when(msg?.what){
-                0->{
-                    user=msg.obj as User
+            when (msg.what) {
+                0 -> {
+                    password = msg.obj as String
+                    Looper.prepare()
+                    L.d("handler中的password:${password}")
+                    Looper.loop()
                 }
+                else -> {
+
+                }
+
             }
         }
     }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_information)
-        Thread{
-            var user=MyApplication.instance.userDao
-                    .getUser(LoginStateUtil.getInstance(this).localPhoneNumberOrNull)
-            var message=Message.obtain()
-            message.what=0
-            message.obj=user
-            handler.sendMessage(message)
+
+
+        val phoneNumber = LoginStateUtil.getInstance(this).localPhoneNumberOrNull
+        var user:User?=null
+        runBlocking {
+            user = MyApplication.instance.userDao.getUser(phoneNumber)
         }
+
+
+        //L.d("$user")
         mTvUserName = findViewById(R.id.tv_my_username)
-        mTvUserName.text= user.name
-        mIvUserName  = findViewById(R.id.iv_username)
+        //L.d("密码是：$password")
+        mTvUserName.text=user?.name
+        mIvUserName = findViewById(R.id.iv_username)
         mTvSchool = findViewById(R.id.tv_my_school)
         mIvSchool = findViewById(R.id.iv_school)
         mTvStudentNumber = findViewById(R.id.tv_my_studentNumber)

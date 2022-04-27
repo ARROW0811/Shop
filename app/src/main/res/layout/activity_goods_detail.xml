@@ -216,7 +216,9 @@
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:src="@drawable/tab_menu_sort" />
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/like_normal" />
 
         <Button
             android:id="@+id/bt_buy"

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ import com.example.shop.MyApplication
 import com.example.shop.R
 import com.example.shop.util.RxClickUtil
 import com.example.shop.util.T
+import kotlinx.coroutines.runBlocking
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 import kotlin.random.Random
@@ -31,18 +33,7 @@ class FindPwdFragment : Fragment() {
     lateinit var mEtCode: EditText
     var tempCode: String? =null
     var password: String? =null
-    val handler : Handler = object : Handler(Looper.myLooper()!!){
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-            when(msg?.what){
-                0 ->{
-                    password= msg.obj as String
-                }
-                else -> {
-                }
-            }
-        }
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,14 +66,10 @@ class FindPwdFragment : Fragment() {
 
                     val phoneNumber = mEtPhoneNumber.text.toString()
                     val code = mEtCode.text.toString()
-                    thread {
+                    runBlocking {
                         val password = MyApplication.instance.userDao.getPassword(phoneNumber)
-                        var message:Message= Message.obtain()
-                        message.what=0
-                        message.obj=password
-                        handler.sendMessage(message)
                     }
-                    if (code.equals(tempCode)) {
+                    if (TextUtils.equals(code,tempCode)) {
                         password?.let { showPasswordDialog(it) }
                     } else {
                         T.showShort(context, "验证码错误或手机号错误")

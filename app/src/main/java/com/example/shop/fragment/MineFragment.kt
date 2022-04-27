@@ -39,8 +39,10 @@ class MineFragment : Fragment() {
     lateinit var mBtnQuit: Button
     private var popupWindow: PopupWindow?=null
     lateinit var imageUri: Uri
+    private lateinit var minePresenter: MinePresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -58,6 +60,8 @@ class MineFragment : Fragment() {
         mIvInformation = view.findViewById(R.id.iv_information)
         mTvInformation = view.findViewById(R.id.tv_information)
         mBtnQuit = view.findViewById(R.id.bt_quit)
+        minePresenter = MinePresenter(this)
+        circleImageHead = view.findViewById(R.id.iv_icon)
         mIvPublished.setOnClickListener(View.OnClickListener {
             val intent = Intent(activity, PublishedActivity::class.java)
             startActivity(intent)
@@ -134,7 +138,8 @@ class MineFragment : Fragment() {
         }
         //相册按钮监听
         mTvFromAlbums.setOnClickListener { //去除选择框
-            MinePresenter(this).requestPermissionAndTryOpen();
+            minePresenter.requestPermissionAndTryOpen();
+
             popupWindow!!.dismiss()
         }
         //取消按钮监听

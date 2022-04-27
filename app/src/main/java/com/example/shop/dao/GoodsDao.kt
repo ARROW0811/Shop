@@ -1,28 +1,22 @@
-package com.example.shop.dao;
+package com.example.shop.dao
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
-import androidx.room.Update;
-
-import com.example.shop.entity.Goods;
-
-import java.util.List;
+import androidx.room.*
+import com.example.shop.entity.Goods
 
 @Dao
-public interface GoodsDao {
+interface GoodsDao {
     @Insert
-    void insertGoods(Goods...goods);
-    @Update
-    void updateGoods(Goods...goods);
-    @Delete
-    void deleteGoods(Goods...goods);
-    @Query("DELETE FROM GOODS")
-    void deleteAllGoods();
-    /*
-    @Query("SELECT * FROM GOODS ORDER BY DESC")
-    List<Goods> getAllGoods();
+    suspend fun insertGoods(vararg goods: Goods?)
 
-     */
+    @Update
+    suspend fun updateGoods(vararg goods: Goods?)
+
+    @Delete
+    suspend fun deleteGoods(vararg goods: Goods?)
+
+    @Query("DELETE FROM GOODS")
+    suspend fun deleteAllGoods()
+
+    @get:Query("SELECT * FROM GOODS ORDER BY gid DESC")
+    val allGoods: List<Goods?>?
 }

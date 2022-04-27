@@ -1,5 +1,6 @@
 package com.example.shop.entity;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -7,12 +8,17 @@ import androidx.room.PrimaryKey;
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int uid;
+    @ColumnInfo(name = "name",typeAffinity = ColumnInfo.TEXT)
     private String name;
+    @ColumnInfo(name = "school",typeAffinity = ColumnInfo.TEXT)
     private String school;
+    @ColumnInfo(name = "studentNumber",typeAffinity = ColumnInfo.TEXT)
     private String studentNumber;
+    @ColumnInfo(name = "phoneNumber",typeAffinity = ColumnInfo.TEXT)
     private String phoneNumber;
+    @ColumnInfo(name = "password",typeAffinity = ColumnInfo.TEXT)
     private String password;
-
+    @ColumnInfo(name = "iconId",typeAffinity = ColumnInfo.INTEGER)
     private int iconId;
 
     public int getUid() {

@@ -55,7 +55,6 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder>{
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
                 Goods goods = mGoodsList.get(position);
-                T.showShort(view.getContext(), "进入详情");
                 Intent intent=new Intent();
                 intent.setClass(view.getContext(), GoodsDetailActivity.class);
                 view.getContext().startActivity(intent);

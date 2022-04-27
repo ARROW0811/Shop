@@ -12,11 +12,5 @@ object RoomUtil {
     fun initUserDatabase(name:String): UserDatabase {
         return Room.databaseBuilder(MyApplication.instance, UserDatabase::class.java, name).build()
     }
-    fun updateUser(){
-        var userList:List<User> =userDao.getAllUser()
-        lateinit var text:String
-        userList.forEach{
-            text+="iconId:${it.iconId} name:${it.name}"
-        }
-    }
+
 }

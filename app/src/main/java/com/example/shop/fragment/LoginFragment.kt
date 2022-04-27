@@ -21,6 +21,7 @@ import com.example.shop.util.L.d
 import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.RxClickUtil
 import com.example.shop.util.T
+import kotlinx.coroutines.runBlocking
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
@@ -57,22 +58,21 @@ class LoginFragment : Fragment() {
         RxClickUtil.clickEvent(mBtnLogin)
                 .throttleFirst(500,TimeUnit.MILLISECONDS)
                 .subscribe{
-                    thread {
-                        var password=mEtPassWord.text.toString()
-                        var phoneNumber=mEtPhoneNumber.text.toString()
-                        if(password.equals(MyApplication.instance.userDao.getPassword(phoneNumber))){
+                    var password=mEtPassWord.text.toString()
+                    var phoneNumber=mEtPhoneNumber.text.toString()
+                    var temp=false
+                    runBlocking {
+                        temp= (password.equals(MyApplication.instance.userDao.getPassword(phoneNumber)))
+                    }
+                        if(temp){
                             var intent=Intent(activity,HomeActivity::class.java)
                             startActivity(intent)
-                            Looper.prepare()
-                            T.showShort(context,"登陆成功")
-                            Looper.loop()
                             LoginStateUtil.getInstance(context).savePhoneNumberToLocal(phoneNumber)
+                            T.showShort(context,"登陆成功")
+                            L.d("电话号码是：${LoginStateUtil.getInstance(context).localPhoneNumberOrNull}")
                         }else{
-                            Looper.prepare()
                             T.showShort(context,"密码错误")
-                            Looper.loop()
                         }
-                    }
 
                 }
 
