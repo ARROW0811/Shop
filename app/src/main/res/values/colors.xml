@@ -21,4 +21,5 @@
     <color name="Blue">#FF1296db</color>
     <!--MineFragment-->
     <color name="quit_red">#FFf74b4b</color>
+    <color name="price_gred">#FFC0C0C0</color>
 </resources>

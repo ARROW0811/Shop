@@ -46,7 +46,7 @@ public class SoldActivity extends AppCompatActivity {
     }
     private void initGoods() {
         for (int i=0;i<10;i++){
-            Goods goods1=new Goods("商品",R.drawable.icon,"100");
+            Goods goods1=new Goods(1,"商品",R.drawable.icon,"100");
             goodsList.add(goods1);
         }
     }

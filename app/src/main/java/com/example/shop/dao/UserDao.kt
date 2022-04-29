@@ -16,4 +16,7 @@ interface UserDao {
 
     @Query("SELECT password FROM User WHERE phoneNumber=:phoneNumber LIMIT 1")
     suspend fun getPassword(phoneNumber: String): String?
+
+    @Update
+    suspend fun updateUser(user:User)
 }

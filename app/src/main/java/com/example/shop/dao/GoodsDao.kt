@@ -4,8 +4,8 @@ import androidx.room.*
 import com.example.shop.entity.Goods
 
 @Dao
-interface GoodsDao {
-    @Insert
+interface GoodsDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertGoods(vararg goods: Goods?)
 
     @Update
@@ -17,6 +17,15 @@ interface GoodsDao {
     @Query("DELETE FROM GOODS")
     suspend fun deleteAllGoods()
 
-    @get:Query("SELECT * FROM GOODS ORDER BY gid DESC")
-    val allGoods: List<Goods?>?
+    @Query("SELECT * FROM GOODS WHERE state = 1")
+    suspend fun getAllUpGoods(): List<Goods?>?
+
+    @Query("SELECT * FROM GOODS WHERE gid=:gid")
+    suspend fun getGoods(gid:Int):Goods
+
+    @Query("SELECT * FROM GOODS WHERE sort=:sort")
+    suspend fun getGoodsFromSort(sort:String):List<Goods?>?
+
+    @Query("SELECT * FROM GOODS WHERE phoneNumber=:phoneNumber")
+    suspend fun getGoodsFromPhone(phoneNumber:String):List<Goods>?
 }

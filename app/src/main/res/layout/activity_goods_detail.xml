@@ -79,31 +79,33 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="标题..."
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_goods" />
 
-            <com.chockqiu.view.PriceView
+            <TextView
                 android:id="@+id/tv_goodsPrice"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:text="1899"
+                android:textColor="@color/quit_red"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_goodsTitle"
-                app:pv_delLineText="2000"
-                app:pv_delLineTextColor="#cccccc"
-                app:pv_delLineTextLeftPadding="3dp"
-                app:pv_delLineTextSize="12sp"
-                app:pv_price2Text=".99"
-                app:pv_price2TextColor="@color/quit_red"
-                app:pv_price2TextSize="10sp"
-                app:pv_priceText="1899"
-                app:pv_priceTextColor="@color/quit_red"
-                app:pv_priceTextLeftPadding="1dp"
-                app:pv_priceTextSize="16sp"
-                app:pv_unitText="¥"
-                app:pv_unitTextColor="@color/quit_red"
-                app:pv_unitTextSize="10sp" />
+                app:layout_constraintTop_toBottomOf="@id/tv_goodsTitle" />
+
+            <TextView
+                android:id="@+id/tv_goodsPrimePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="4dp"
+                android:text="2000"
+                android:textColor="@color/login_edittext_hint"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_goodsPrice"
+                app:layout_constraintStart_toEndOf="@id/tv_goodsPrice" />
 
             <TextView
                 android:id="@+id/tv_details"
@@ -112,6 +114,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/details"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_goodsPrice" />
 
@@ -120,15 +123,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
                 android:text="@string/detailsContent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_details" />
+                android:inputType="textMultiLine"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/tv_details"
+                app:layout_constraintTop_toTopOf="@id/tv_details" />
 
             <RelativeLayout
                 android:id="@+id/rl_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_details_content">
@@ -137,22 +141,26 @@
                     android:id="@+id/tv_phoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="@string/sellerPhoneNumber" />
+                    android:text="@string/sellerPhoneNumber"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_seller_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/tv_phoneNumber"
-                    android:text="13330227416" />
+                    android:text="13330227416"
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_delivery"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rl_phone">
@@ -161,23 +169,27 @@
                     android:id="@+id/tv_delivery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="@string/delivery" />
+                    android:text="@string/delivery2"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_delivery_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
                     android:layout_toEndOf="@id/tv_delivery"
-                    android:text="自行提取" />
+                    android:text="自行提取"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_location"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rl_delivery">
@@ -186,16 +198,20 @@
                     android:id="@+id/tv_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:text="@string/location" />
+                    android:text="@string/location"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tv_location_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="43dp"
                     android:layout_toEndOf="@id/tv_location"
-                    android:text="明理4舍" />
+                    android:text="明理4舍"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 

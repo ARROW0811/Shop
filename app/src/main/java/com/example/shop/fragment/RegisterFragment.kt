@@ -56,12 +56,12 @@ class RegisterFragment : Fragment() {
         RxClickUtil.clickEvent(mBtRegister)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe {
-                    var name = mEtUsername.text.toString()
-                    var school = mEtSchool.text.toString()
-                    var studentNumber = mEtStudentNumber.text.toString()
-                    var phoneNumber = mEtPhoneNumber.text.toString()
-                    var password = mEtPassWord.text.toString()
-                    var user = User(name, school, studentNumber, phoneNumber, password)
+                    val name = mEtUsername.text.toString()
+                    val school = mEtSchool.text.toString()
+                    val studentNumber = mEtStudentNumber.text.toString()
+                    val phoneNumber = mEtPhoneNumber.text.toString()
+                    val password = mEtPassWord.text.toString()
+                    val user = User(name, school, studentNumber, phoneNumber, password)
                     var temp=null
                     runBlocking {
                         temp= MyApplication.instance.userDao.getName(phoneNumber) as Nothing?

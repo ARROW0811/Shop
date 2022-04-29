@@ -39,7 +39,7 @@ class MineFragment : Fragment() {
     lateinit var mBtnQuit: Button
     private var popupWindow: PopupWindow?=null
     lateinit var imageUri: Uri
-    private lateinit var minePresenter: MinePresenter
+    lateinit var minePresenter: MinePresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -139,7 +139,6 @@ class MineFragment : Fragment() {
         //相册按钮监听
         mTvFromAlbums.setOnClickListener { //去除选择框
             minePresenter.requestPermissionAndTryOpen();
-
             popupWindow!!.dismiss()
         }
         //取消按钮监听

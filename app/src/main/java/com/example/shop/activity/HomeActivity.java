@@ -8,6 +8,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -17,6 +18,7 @@ import com.example.shop.fragment.MainFragment;
 import com.example.shop.fragment.PublishFragment;
 import com.example.shop.fragment.MineFragment;
 import com.example.shop.fragment.SortFragment;
+import com.example.shop.util.WindowBarStatusUtil;
 
 public class HomeActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     private ViewPager2 viewPager2;
@@ -30,6 +32,7 @@ public class HomeActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        WindowBarStatusUtil.setBarStatus(this, View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         mainFragmentPagerAdapter = new MainFragmentPagerAdapter(this);
         radioGroup = findViewById(R.id.rg_tab_bar);
         viewPager2 = findViewById(R.id.vpager);

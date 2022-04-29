@@ -11,17 +11,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shop.R;
 import com.example.shop.entity.Goods;
+import com.example.shop.util.T;
 
 import java.util.List;
 
 public class GoodsAdapter2 extends RecyclerView.Adapter<GoodsAdapter2.ViewHolder>{
     private List<Goods> mGoodsList;
     static class ViewHolder extends RecyclerView.ViewHolder{
+        View mGoodsView;
         ImageView mIvGoods;
+        ImageView mIvDelete;
         TextView mTvGoodsName;
         TextView mTvGoodsPrice;
+        int gid;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            mGoodsView=itemView;
+            mIvDelete=itemView.findViewById(R.id.iv_delete);
             mIvGoods=(ImageView) itemView.findViewById(R.id.iv_goods);
             mTvGoodsName=(TextView) itemView.findViewById(R.id.tv_goodsName);
             mTvGoodsPrice=(TextView) itemView.findViewById(R.id.tv_goodsPrice);
@@ -40,11 +46,24 @@ public class GoodsAdapter2 extends RecyclerView.Adapter<GoodsAdapter2.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GoodsAdapter2.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Goods goods =mGoodsList.get(position);
-        holder.mIvGoods.setImageResource(goods.getImageId());
-        holder.mTvGoodsName.setText(goods.getName());
+        holder.mIvGoods.setImageResource(goods.getImage());
+        holder.mTvGoodsName.setText(goods.getTitle());
         holder.mTvGoodsPrice.setText(goods.getPrice());
+        holder.gid=goods.getGid();
+        holder.mIvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                T.showShort(view.getContext(), "删除成功");
+            }
+        });
+        holder.mGoodsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                T.showShort(view.getContext(), "查看详情");
+            }
+        });
     }
 
     @Override

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shop.R;
 import com.example.shop.activity.GoodsDetailActivity;
 import com.example.shop.entity.Goods;
-import com.example.shop.util.T;
 
 import java.util.List;
 
@@ -22,13 +21,14 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder>{
     static class ViewHolder extends RecyclerView.ViewHolder{
         View mGoodsView;
         ImageView mIvGoods;
-        TextView mTvGoodsName;
+        TextView mTvGoodsTitle;
         TextView mTvGoodsPrice;
+        int gid;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mGoodsView=itemView;
             mIvGoods=(ImageView) itemView.findViewById(R.id.iv_goods);
-            mTvGoodsName=(TextView) itemView.findViewById(R.id.tv_goodsName);
+            mTvGoodsTitle =(TextView) itemView.findViewById(R.id.tv_goodsName);
             mTvGoodsPrice=(TextView) itemView.findViewById(R.id.tv_goodsPrice);
         }
     }
@@ -47,15 +47,17 @@ public class GoodsAdapter extends RecyclerView.Adapter<GoodsAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull GoodsAdapter.ViewHolder holder, int position) {
         Goods goods =mGoodsList.get(position);
-        holder.mIvGoods.setImageResource(goods.getImageId());
-        holder.mTvGoodsName.setText(goods.getName());
+        holder.mIvGoods.setImageResource(goods.getImage());
+        holder.mTvGoodsTitle.setText(goods.getTitle());
         holder.mTvGoodsPrice.setText(goods.getPrice());
+        holder.gid=goods.getGid();
         holder.mGoodsView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
                 Goods goods = mGoodsList.get(position);
                 Intent intent=new Intent();
+                intent.putExtra("gid",goods.getGid());
                 intent.setClass(view.getContext(), GoodsDetailActivity.class);
                 view.getContext().startActivity(intent);
             }

@@ -26,16 +26,16 @@ class InformationActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var mTvUserName: TextView
     lateinit var mIvUserName: ImageView
     private var mDlgSchool: AlertDialog? = null
-    private var mTvSchool: TextView? = null
+    lateinit var mTvSchool: TextView
     lateinit var mIvSchool: ImageView
     private var mDlgStudentNumber: AlertDialog? = null
-    private var mTvStudentNumber: TextView? = null
+    lateinit var mTvStudentNumber: TextView
     lateinit var mIvStudentNumber: ImageView
     private var mDlgPhoneNumber: AlertDialog? = null
-    private var mTvPhoneNumber: TextView? = null
+    lateinit var mTvPhoneNumber: TextView
     lateinit var mIvPhoneNumber: ImageView
     private var mDlgPassword: AlertDialog? = null
-    private var mTvPassword: TextView? = null
+    lateinit var mTvPassword: TextView
     lateinit var mIvPassword: ImageView
     lateinit var mIvBack: ImageView
     lateinit var user: User
@@ -71,19 +71,22 @@ class InformationActivity : AppCompatActivity(), View.OnClickListener {
             user = MyApplication.instance.userDao.getUser(phoneNumber)
         }
 
-
         //L.d("$user")
         mTvUserName = findViewById(R.id.tv_my_username)
         //L.d("密码是：$password")
         mTvUserName.text=user?.name
         mIvUserName = findViewById(R.id.iv_username)
         mTvSchool = findViewById(R.id.tv_my_school)
+        mTvSchool.text=user?.school
         mIvSchool = findViewById(R.id.iv_school)
         mTvStudentNumber = findViewById(R.id.tv_my_studentNumber)
+        mTvStudentNumber.text=user?.studentNumber
         mIvStudentNumber = findViewById(R.id.iv_studentNumber)
         mTvPhoneNumber = findViewById(R.id.tv_my_phoneNumber)
+        mTvPhoneNumber.text=user?.studentNumber
         mIvPhoneNumber = findViewById(R.id.iv_phoneNumber)
         mTvPassword = findViewById(R.id.tv_my_password)
+        mTvPassword.text=user?.password
         mIvPassword = findViewById(R.id.iv_password)
         mIvBack = findViewById(R.id.iv_back)
         mIvUserName.setOnClickListener(this)
@@ -106,6 +109,7 @@ class InformationActivity : AppCompatActivity(), View.OnClickListener {
                 mBtCancel.setOnClickListener { mDlgUserName!!.dismiss() }
                 mBtOk.setOnClickListener {
                     mTvUserName!!.text = mEtName.text.toString()
+
                     mDlgUserName!!.dismiss()
                 }
                 mDlgUserName = AlertDialog.Builder(this@InformationActivity)
