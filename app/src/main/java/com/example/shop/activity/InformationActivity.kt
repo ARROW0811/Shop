@@ -83,7 +83,7 @@ class InformationActivity : AppCompatActivity(), View.OnClickListener {
         mTvStudentNumber.text=user?.studentNumber
         mIvStudentNumber = findViewById(R.id.iv_studentNumber)
         mTvPhoneNumber = findViewById(R.id.tv_my_phoneNumber)
-        mTvPhoneNumber.text=user?.studentNumber
+        mTvPhoneNumber.text=user?.phoneNumber
         mIvPhoneNumber = findViewById(R.id.iv_phoneNumber)
         mTvPassword = findViewById(R.id.tv_my_password)
         mTvPassword.text=user?.password

@@ -51,6 +51,7 @@ class MinePresenter(val view: MineFragment) {
 
     private fun decodeBitmapAndSet(result: ActivityResult) {
         val uri = result.data?.data
+        L.d("uri:${uri}")
         var bm: Bitmap? = null
         if (uri != null) {
             try { bm = BitmapHandler.getBitmapFormUri(uri, view.requireContext()) }

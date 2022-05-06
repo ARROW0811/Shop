@@ -28,4 +28,7 @@ interface GoodsDao{
 
     @Query("SELECT * FROM GOODS WHERE phoneNumber=:phoneNumber")
     suspend fun getGoodsFromPhone(phoneNumber:String):List<Goods>?
+
+    @Query("SELECT * FROM GOODS WHERE title like '%' || :searchText || '%'")
+    suspend fun getGoodsFromText(searchText:String):List<Goods>?
 }

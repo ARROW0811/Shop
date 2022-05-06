@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.example.shop.R
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import java.util.ArrayList
 
 class MainFragment : Fragment() {
     var mGoodsList=mutableListOf<Goods>()
+    lateinit var mSearchView: SearchView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -26,10 +28,40 @@ class MainFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         initGoodsBean()
         val recyclerView = view.findViewById<View>(R.id.rl_goods) as RecyclerView
+        mSearchView=view.findViewById(R.id.sv_search)
         val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layoutManager
-        val goodsAdapter = GoodsAdapter(mGoodsList)
+        var goodsAdapter = GoodsAdapter(mGoodsList)
         recyclerView.adapter = goodsAdapter
+        mSearchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                var mGoodList: List<Goods>? =null
+                runBlocking {
+                    mGoodList= newText?.let { MyApplication.instance.goodsDao.getGoodsFromText(it) } as List<Goods>
+                }
+                if (mGoodList==null){
+                    T.showShort(context,"没有这样的商品")
+                    return true
+                }
+                mGoodsList.clear()
+                for (i in mGoodList?.indices!!){
+                    val goods= mGoodList!!.get(i)
+                    val goods1=Goods(goods.gid,goods.title,R.drawable.icon,goods.price)
+                    mGoodsList.add(goods1)
+                }
+                val layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                recyclerView.layoutManager = layoutManager
+                goodsAdapter = GoodsAdapter(mGoodsList)
+                recyclerView.adapter = goodsAdapter
+                return true
+            }
+
+        })
+
+
         return view
     }
 

@@ -29,8 +29,6 @@ class Goods constructor(){
     var phoneNumber:String=""
     @ColumnInfo(name="state")
     var state:Int=0
-
-
     constructor(gid:Int,title: String, image: Int, price: String):this(){
         this.gid=gid
         this.title = title

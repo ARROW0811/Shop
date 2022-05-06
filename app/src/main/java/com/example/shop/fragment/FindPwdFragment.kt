@@ -67,7 +67,7 @@ class FindPwdFragment : Fragment() {
                     val phoneNumber = mEtPhoneNumber.text.toString()
                     val code = mEtCode.text.toString()
                     runBlocking {
-                        val password = MyApplication.instance.userDao.getPassword(phoneNumber)
+                        password = MyApplication.instance.userDao.getPassword(phoneNumber)
                     }
                     if (TextUtils.equals(code,tempCode)) {
                         password?.let { showPasswordDialog(it) }

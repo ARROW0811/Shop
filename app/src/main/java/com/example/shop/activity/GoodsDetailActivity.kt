@@ -1,19 +1,26 @@
 package com.example.shop.activity
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.chockqiu.view.PriceView
 import com.example.shop.MyApplication
 import com.example.shop.R
+import com.example.shop.entity.Collect
 import com.example.shop.entity.Goods
+import com.example.shop.util.L
+import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.RxClickUtil
 import com.example.shop.util.T
 import kotlinx.coroutines.runBlocking
 import org.w3c.dom.Text
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 import kotlin.properties.Delegates
 
@@ -29,7 +36,10 @@ class GoodsDetailActivity : AppCompatActivity() {
     lateinit var mTvDelivery:TextView
     lateinit var mTvLocation:TextView
     lateinit var goods:Goods
+    var uid:Int=0
+    val phoneNumber: String =LoginStateUtil.getInstance(this).localPhoneNumberOrNull
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goods_detail)
@@ -47,6 +57,7 @@ class GoodsDetailActivity : AppCompatActivity() {
         val gid=intent.getIntExtra("gid",1)
         runBlocking {
             goods=MyApplication.instance.goodsDao.getGoods(gid)
+            uid= MyApplication.instance.userDao.getUserId(phoneNumber)!!
         }
         mTvTitle.text=goods.title
         mTvPrice.text=goods.price
@@ -57,24 +68,51 @@ class GoodsDetailActivity : AppCompatActivity() {
         mTvLocation.text=goods.location
         mIvBack.setOnClickListener(View.OnClickListener { finish() })
         mIvCollect?.setTag(R.drawable.like_normal)
+        mIvCollect?.setImageResource(R.drawable.like_normal)
+        var id=0
+        runBlocking {
+            id.let { MyApplication.instance.collectDao.getId(phoneNumber,gid) }
+        }
+        if(id!=0){
+            mIvCollect.setImageResource(R.drawable.like_pressed)
+            mIvCollect.setTag(R.drawable.like_pressed)
+            T.showShort(this,"id是：${id}")
+        }
 
         RxClickUtil.clickEvent(mIvCollect)
                 .throttleFirst(5,TimeUnit.MILLISECONDS)
                 .subscribe {
-
                     if (mIvCollect.getTag()==R.drawable.like_normal){
                         mIvCollect.setImageResource(R.drawable.like_pressed)
                         mIvCollect.setTag(R.drawable.like_pressed)
+                        runBlocking {
+                            val collect: Collect =Collect(gid,phoneNumber)
+                            MyApplication.instance.collectDao.addCollect(collect)
+                        }
                         T.showShort(this,"收藏成功")
+
                     }else{
                         mIvCollect?.setImageResource(R.drawable.like_normal)
                         mIvCollect?.setTag(R.drawable.like_normal)
+                        runBlocking {
+                            val collect: Collect =Collect(gid,LoginStateUtil.getInstance(applicationContext).localPhoneNumberOrNull)
+                            MyApplication.instance.collectDao.deleteCollect(phoneNumber,gid)
+                        }
                         T.showShort(this,"取消收藏")
                     }
 
 
                 }
 
+        RxClickUtil.clickEvent(mBtBuy)
+                .throttleFirst(500,TimeUnit.MILLISECONDS)
+                .subscribe {
 
+                    val current = LocalDateTime.now()
+
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                    val formatted = current.format(formatter)
+                    T.showShort(this,formatted)
+                }
     }
 }
