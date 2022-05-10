@@ -29,6 +29,12 @@ interface GoodsDao{
     @Query("SELECT * FROM GOODS WHERE phoneNumber=:phoneNumber")
     suspend fun getGoodsFromPhone(phoneNumber:String):List<Goods>?
 
-    @Query("SELECT * FROM GOODS WHERE title like '%' || :searchText || '%'")
+    @Query("SELECT * FROM GOODS WHERE title like '%' || :searchText || '%' and state=1")
     suspend fun getGoodsFromText(searchText:String):List<Goods>?
+
+    @Query("UPDATE GOODS SET state=:state WHERE gid=:gid")
+    suspend fun updateState(state:Int,gid:Int)
+
+    @Query("SELECT * FROM GOODS WHERE state=2 and phoneNumber=:phoneNumber")
+    suspend fun getMySoldGoods(phoneNumber: String):List<Goods>?
 }

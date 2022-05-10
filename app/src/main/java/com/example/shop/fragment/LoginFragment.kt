@@ -61,13 +61,16 @@ class LoginFragment : Fragment() {
                     var password=mEtPassWord.text.toString()
                     var phoneNumber=mEtPhoneNumber.text.toString()
                     var temp=false
+                    var userName:String?
                     runBlocking {
                         temp= (password.equals(MyApplication.instance.userDao.getPassword(phoneNumber)))
+                        userName=MyApplication.instance.userDao.getName(phoneNumber)
                     }
                         if(temp){
                             var intent=Intent(activity,HomeActivity::class.java)
                             startActivity(intent)
                             LoginStateUtil.getInstance(context).savePhoneNumberToLocal(phoneNumber)
+                            LoginStateUtil.getInstance(context).saveUserNameToLocal(userName)
                             T.showShort(context,"登陆成功")
                             L.d("电话号码是：${LoginStateUtil.getInstance(context).localPhoneNumberOrNull}")
                         }else{

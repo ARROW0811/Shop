@@ -14,7 +14,7 @@ class Goods constructor(){
     @ColumnInfo(name="sort")
     var sort: String=""
     @ColumnInfo(name="image")
-    var image: Int =0
+    var image: String =""
     @ColumnInfo(name="price")
     lateinit var price: String
     @ColumnInfo(name="primePrice")
@@ -29,14 +29,27 @@ class Goods constructor(){
     var phoneNumber:String=""
     @ColumnInfo(name="state")
     var state:Int=0
-    constructor(gid:Int,title: String, image: Int, price: String):this(){
+    constructor(gid:Int,title: String, image: String, price: String):this(){
         this.gid=gid
         this.title = title
         this.image = image
         this.price = price
     }
 
-    constructor(title: String, image: Int, price: String, describe: String, location: String, sort: String, primePrice: String, deliver: String,phoneNumber:String,state:Int) : this() {
+    constructor(title: String, image: String, price: String, describe: String, location: String, sort: String, primePrice: String, deliver: String,phoneNumber:String,state:Int) : this() {
+        this.title = title
+        this.image = image
+        this.price = price
+        this.describe = describe
+        this.location = location
+        this.sort = sort
+        this.primePrice = primePrice
+        this.deliver = deliver
+        this.phoneNumber=phoneNumber
+        this.state=state
+    }
+    constructor(gid:Int,title: String, image: String, price: String, describe: String, location: String, sort: String, primePrice: String, deliver: String,phoneNumber:String,state:Int) : this() {
+        this.gid=gid
         this.title = title
         this.image = image
         this.price = price

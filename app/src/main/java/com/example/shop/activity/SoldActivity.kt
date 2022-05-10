@@ -16,20 +16,20 @@ import com.example.shop.util.T
 import kotlinx.coroutines.runBlocking
 import java.util.ArrayList
 
-class PublishedActivity : AppCompatActivity() {
+class SoldActivity : AppCompatActivity() {
     lateinit var mIvBack: ImageView
-    private var mTvPublished: TextView? = null
+    private var mTvSold: TextView? = null
     private var recyclerView: RecyclerView? = null
-    private val mGoodsList: MutableList<Goods> = ArrayList()
+    private val goodsList: MutableList<Goods> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_published)
+        setContentView(R.layout.activity_sold)
         initGoods()
-        mTvPublished = findViewById(R.id.tv_published)
+        mTvSold = findViewById(R.id.tv_sold)
         recyclerView = findViewById<View>(R.id.rl_goods2) as RecyclerView
         val layoutManager = LinearLayoutManager(this)
         recyclerView!!.layoutManager = layoutManager
-        val adapter = GoodsAdapter2(mGoodsList)
+        val adapter = GoodsAdapter2(goodsList)
         recyclerView!!.adapter = adapter
         mIvBack = findViewById(R.id.iv_back)
         mIvBack.setOnClickListener(View.OnClickListener {
@@ -43,16 +43,16 @@ class PublishedActivity : AppCompatActivity() {
         var mGoodList: List<Goods>? =null
         runBlocking {
             mGoodList= MyApplication.instance.goodsDao
-                    .getGoodsFromPhone(LoginStateUtil.getInstance(applicationContext).localPhoneNumberOrNull) as List<Goods>
+                    .getMySoldGoods(LoginStateUtil.getInstance(applicationContext).localPhoneNumberOrNull)
         }
         if (mGoodList==null){
-            T.showShort(applicationContext,"你还没有发布商品")
+            T.showShort(applicationContext,"你还没有卖出过商品")
             return
         }
         for (i in mGoodList?.indices!!){
             val goods= mGoodList!!.get(i)
             val goods1=Goods(goods.gid,goods.title,goods.image,goods.price)
-            mGoodsList.add(goods1)
+            goodsList.add(goods1)
         }
     }
 

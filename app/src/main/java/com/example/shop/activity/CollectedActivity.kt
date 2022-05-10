@@ -10,7 +10,9 @@ import android.widget.ImageView
 import com.example.shop.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shop.MyApplication
+import com.example.shop.adapter.CollectAdapter
 import com.example.shop.adapter.GoodsAdapter2
+import com.example.shop.util.L
 import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.T
 import kotlinx.coroutines.runBlocking
@@ -29,7 +31,7 @@ class CollectedActivity : AppCompatActivity() {
         recyclerView = findViewById<View>(R.id.rl_goods2) as RecyclerView
         val layoutManager = LinearLayoutManager(this)
         recyclerView!!.layoutManager = layoutManager
-        val adapter = GoodsAdapter2(mGoodsList)
+        val adapter = CollectAdapter(mGoodsList)
         recyclerView!!.adapter = adapter
         mIvBack = findViewById(R.id.iv_back)
         mIvBack.setOnClickListener(View.OnClickListener { finish() })
@@ -48,14 +50,19 @@ class CollectedActivity : AppCompatActivity() {
         }else{
             var size= mGoodsIdList!!.size
             T.showShort(this,"你收藏了${size}商品:")
+            var goodsId=mGoodsIdList.toString()
+            L.d("goodsId:${goodsId}")
         }
+
         for (i in mGoodsIdList?.indices!!){
             val goodsId= mGoodsIdList!![i]
-            val goods: Goods? =null
+            L.d("第${i}个goodsId:${goodsId}")
+            var goods: Goods? =null
             runBlocking {
-                goods.let{MyApplication.instance.goodsDao.getGoods(goodsId)}
+                goods=goods.let{MyApplication.instance.goodsDao.getGoods(goodsId)}
             }
-            val goods1= goods?.let { Goods(it.gid,goods.title,R.drawable.icon,goods.price) }
+            val goods1= goods?.let { Goods(it.gid, goods!!.title, goods!!.image, goods!!.price) }
+            L.d("goods具体详情：${goods1.toString()}")
             if (goods1 != null) {
                 mGoodsList.add(goods1)
             }

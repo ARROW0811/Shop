@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.shop.R
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import com.example.shop.activity.PublishedActivity
 import com.example.shop.activity.SoldActivity
 import com.example.shop.activity.BuyedActivity
 import com.example.shop.activity.CollectedActivity
 import com.example.shop.activity.InformationActivity
-import com.example.shop.util.L
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import android.view.Gravity
@@ -20,8 +20,9 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import com.example.shop.minePack.presenter.MinePresenter
-import com.example.shop.util.BlurTransformation
-import com.example.shop.util.T
+import com.example.shop.util.*
+import java.io.FileNotFoundException
+import java.io.IOException
 
 class MineFragment : Fragment() {
     lateinit var circleImageHead: ImageView
@@ -39,6 +40,7 @@ class MineFragment : Fragment() {
     lateinit var mBtnQuit: Button
     private var popupWindow: PopupWindow?=null
     lateinit var imageUri: Uri
+    lateinit var mTvUserName:TextView
     lateinit var minePresenter: MinePresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,8 @@ class MineFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_mine, container, false)
+        mTvUserName=view.findViewById(R.id.tv_username)
+        mTvUserName.text=LoginStateUtil.getInstance(context).localUserNameOrNull
         mIvIcon = view.findViewById(R.id.iv_icon_bg)
         mIvPublished = view.findViewById(R.id.iv_published)
         mTvPublished = view.findViewById(R.id.tv_published)
@@ -112,6 +116,11 @@ class MineFragment : Fragment() {
                 .apply(RequestOptions.bitmapTransform(BlurTransformation(requireContext(), 75, 5)))
                 .into(mIvIcon)
         //参数用来设置模糊程度
+
+
+        //val uri:Uri= Uri.parse("content://media/external_primary/images/media/9321")
+        //SetImageBitmapUtil.setBitmap(uri.toString(),circleImageHead,requireContext())
+
         return view
     }
 

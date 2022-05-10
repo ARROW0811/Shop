@@ -94,7 +94,7 @@ class PublishFragment : Fragment() {
                     var title=mEtTitle.text.toString()
                     var price=mEtPrice.text.toString()
                     var primePrice=mEtPrimePrice.text.toString()
-                    var image=1
+                    var image=publishPresenter.goodsUri.toString()
                     var describe=mEtDescribe.text.toString()
                     var location=mEtLocation.text.toString()
                     var phoneNumber=LoginStateUtil.getInstance(requireContext()).localPhoneNumberOrNull

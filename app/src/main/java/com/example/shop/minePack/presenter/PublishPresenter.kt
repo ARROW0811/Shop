@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -15,6 +16,7 @@ import java.io.FileNotFoundException
 import java.io.IOException
 
 class PublishPresenter (val view: PublishFragment){
+    var goodsUri: Uri?=null
     fun requestPermissionAndTryOpen() {
         requestWriteExternalStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         L.d("打开相册成功")
@@ -49,6 +51,9 @@ class PublishPresenter (val view: PublishFragment){
 
     private fun decodeBitmapAndSet(result: ActivityResult) {
         val uri = result.data?.data
+        if (uri != null) {
+            saveUri(uri)
+        }
         var bm: Bitmap? = null
         if (uri != null) {
             try { bm = BitmapHandler.getBitmapFormUri(uri, view.requireContext()) }
@@ -61,6 +66,9 @@ class PublishPresenter (val view: PublishFragment){
             }
         }
         view.mIvGoodsImg.setImageBitmap(bm)
-
     }
+    private fun saveUri(uri:Uri){
+        goodsUri=uri
+    }
+
 }

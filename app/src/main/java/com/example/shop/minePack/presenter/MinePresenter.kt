@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -17,6 +18,7 @@ import java.io.IOException
 
 class MinePresenter(val view: MineFragment) {
 
+    var iconUri:Uri? = null
     fun requestPermissionAndTryOpen() {
         requestWriteExternalStoragePermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         L.d("打开相册成功")
@@ -49,9 +51,12 @@ class MinePresenter(val view: MineFragment) {
         }
     }
 
-    private fun decodeBitmapAndSet(result: ActivityResult) {
+    private fun decodeBitmapAndSet(result: ActivityResult){
         val uri = result.data?.data
         L.d("uri:${uri}")
+        if (uri != null) {
+            saveUri(uri)
+        }
         var bm: Bitmap? = null
         if (uri != null) {
             try { bm = BitmapHandler.getBitmapFormUri(uri, view.requireContext()) }
@@ -65,5 +70,8 @@ class MinePresenter(val view: MineFragment) {
         }
         view.circleImageHead.setImageBitmap(bm)
 
+    }
+    private fun saveUri(uri: Uri) {
+        iconUri = uri;
     }
 }

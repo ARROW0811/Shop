@@ -41,7 +41,7 @@ class SortDetailActivity : AppCompatActivity() {
         }
         for (i in mGoodList?.indices!!){
             val goods= mGoodList!!.get(i)
-            val goods1=Goods(goods.gid,goods.title,R.drawable.icon,goods.price)
+            val goods1=Goods(goods.gid,goods.title,goods.image,goods.price)
             mGoodsList.add(goods1)
         }
 

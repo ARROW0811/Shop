@@ -95,16 +95,13 @@ class FindPwdFragment : Fragment() {
                 /*
                 DialogInterface.BUTTON_NEGATIVE -> {
                     Log.e("TAG", "复制")
-
                 }
-
                  */
             }
         }
         builder.setPositiveButton("确认", dialogClickListener)
         //builder.setNegativeButton("复制", dialogClickListener)
         builder.create().show();
-
     }
 
     private fun showPasswordDialog(password: String) {

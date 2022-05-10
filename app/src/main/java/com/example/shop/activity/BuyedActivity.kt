@@ -10,49 +10,46 @@ import android.widget.ImageView
 import com.example.shop.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shop.MyApplication
+import com.example.shop.adapter.BuyerAdapter
 import com.example.shop.adapter.GoodsAdapter2
+import com.example.shop.entity.Orders
 import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.T
 import kotlinx.coroutines.runBlocking
 import java.util.ArrayList
 
-class PublishedActivity : AppCompatActivity() {
+class BuyedActivity : AppCompatActivity() {
     lateinit var mIvBack: ImageView
-    private var mTvPublished: TextView? = null
+    private var mTvBuyed: TextView? = null
     private var recyclerView: RecyclerView? = null
-    private val mGoodsList: MutableList<Goods> = ArrayList()
+    private val mOrdersList: MutableList<Orders> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_published)
+        setContentView(R.layout.activity_buyed)
         initGoods()
-        mTvPublished = findViewById(R.id.tv_published)
+        mTvBuyed = findViewById(R.id.tv_buyed)
         recyclerView = findViewById<View>(R.id.rl_goods2) as RecyclerView
         val layoutManager = LinearLayoutManager(this)
         recyclerView!!.layoutManager = layoutManager
-        val adapter = GoodsAdapter2(mGoodsList)
+        val adapter = BuyerAdapter(mOrdersList)
         recyclerView!!.adapter = adapter
         mIvBack = findViewById(R.id.iv_back)
-        mIvBack.setOnClickListener(View.OnClickListener {
-            finish()
-            //Intent intent=new Intent(PublishedActivity.this,HomeActivity.class);
-            //startActivity(intent);
-        })
+        mIvBack.setOnClickListener(View.OnClickListener { finish() })
     }
 
     private fun initGoods() {
-        var mGoodList: List<Goods>? =null
+        var mOrdersList2: List<Orders>? =null
         runBlocking {
-            mGoodList= MyApplication.instance.goodsDao
-                    .getGoodsFromPhone(LoginStateUtil.getInstance(applicationContext).localPhoneNumberOrNull) as List<Goods>
+            val bid=MyApplication.instance.userDao.getUserId(LoginStateUtil.getInstance(applicationContext).localPhoneNumberOrNull)
+            mOrdersList2= bid?.let { MyApplication.instance.ordersDao.getOrdersFromBid(it) }
         }
-        if (mGoodList==null){
-            T.showShort(applicationContext,"你还没有发布商品")
+        if (mOrdersList2==null){
+            T.showShort(applicationContext,"你还没有购买过商品")
             return
         }
-        for (i in mGoodList?.indices!!){
-            val goods= mGoodList!!.get(i)
-            val goods1=Goods(goods.gid,goods.title,goods.image,goods.price)
-            mGoodsList.add(goods1)
+        for (i in mOrdersList2?.indices!!){
+            val orders= mOrdersList2!!.get(i)
+            mOrdersList.add(orders)
         }
     }
 

@@ -18,6 +18,7 @@ import android.widget.ImageView
 import com.example.shop.MyApplication
 import com.example.shop.activity.GoodsDetailActivity
 import com.example.shop.activity.GoodsDetailActivity2
+import com.example.shop.util.LoginStateUtil
 import com.example.shop.util.SetImageBitmapUtil
 import com.example.shop.util.T
 import kotlinx.coroutines.NonDisposableHandle.parent
@@ -25,7 +26,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.runBlocking
 import kotlin.random.Random
 
-internal class GoodsAdapter2(private val mGoodsList: List<Goods>) : RecyclerView.Adapter<GoodsAdapter2.ViewHolder>() {
+internal class CollectAdapter(private val mGoodsList: List<Goods>) : RecyclerView.Adapter<CollectAdapter.ViewHolder>() {
     private lateinit var mContext:Context
     internal class ViewHolder(var mGoodsView: View) : RecyclerView.ViewHolder(mGoodsView) {
         var mIvGoods: ImageView
@@ -67,7 +68,18 @@ internal class GoodsAdapter2(private val mGoodsList: List<Goods>) : RecyclerView
             val position = holder.adapterPosition
             val goods = mGoodsList[position]
             val intent = Intent()
-            intent.putExtra("gid", goods.gid)
+            intent.putExtra("gid",goods.gid)
+            /*
+            intent.putExtra("title",goods.title)
+            intent.putExtra("image",goods.image)
+            intent.putExtra("price",goods.price)
+            intent.putExtra("primePrice",goods.primePrice)
+            intent.putExtra("describe",goods.describe)
+            intent.putExtra("phoneNumber",goods.phoneNumber)
+            intent.putExtra("deliver",goods.deliver)
+            intent.putExtra("location",goods.location)
+
+             */
             intent.setClass(view.context, GoodsDetailActivity2::class.java)
             view.context.startActivity(intent)
             T.showShort(view.context, "查看详情")
@@ -80,15 +92,17 @@ internal class GoodsAdapter2(private val mGoodsList: List<Goods>) : RecyclerView
     private fun showDeleteDialog(context: Context,goods:Goods) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("消息提示")
-        builder.setMessage("您确认要删除吗？")
+        builder.setMessage("您确认要取消收藏吗？")
 
         val dialogClickListener = DialogInterface.OnClickListener { _, which ->
             when (which) {
                 DialogInterface.BUTTON_POSITIVE -> {
+                    val phoneNumber=LoginStateUtil.getInstance(context).localPhoneNumberOrNull
+                    val gid=goods.gid
                     runBlocking {
-                        MyApplication.instance.goodsDao.deleteGoods(goods)
+                        MyApplication.instance.collectDao.deleteCollect(phoneNumber,gid)
                     }
-                    T.showShort(context, "删除成功")
+                    T.showShort(context, "取消成功")
                 }
                 DialogInterface.BUTTON_NEGATIVE -> {
                     Log.e("TAG", "取消")
